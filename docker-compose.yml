@@ -1,0 +1,19 @@
+# Docker compose to build and run the eureka service
+version: '2'
+services:
+  eureka-server:
+    image: vaxen91/eureka-server
+    container_name: discovery_service
+    build:
+      context: .
+      dockerfile: ./netlifx-eureka-naming-server/Dockerfile
+    ports:
+    - "8761:8761"
+  currency-conversion:
+    image: vaxen91/currency-conversion-service
+    container_name: currency-conversion-service
+    build:
+      context: .
+      dockerfile: ./currency-conversion-service/Dockerfile
+    ports:
+    - "8100:8100"
